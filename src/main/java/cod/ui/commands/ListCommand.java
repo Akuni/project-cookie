@@ -1,11 +1,12 @@
 package cod.ui.commands;
 
 import cod.CookieOnDemand;
-import cod.CustomerDatabase;
 import cod.ShoppingCart;
 import cod.tcf.Customer;
 import cod.tcf.Voucher;
 import cod.ui.framework.Command;
+
+import java.util.*;
 
 /**
  * Created by SARROCHE Nicolas on 04/01/16.
@@ -18,20 +19,16 @@ public class ListCommand extends Command<CookieOnDemand> {
 
     @Override
     public void execute() {
-        CustomerDatabase db = system.getCustomers();
+        List<Voucher> v = new ArrayList<>();
         for(Customer customer : system.getCustomers().getAll()){
-            System.out.println( customer.getFirstName() + " : " + customer.getVoucher());
+            v.add(customer.getVoucher().get());
         }
-        System.out.println("----------");
-        for(Customer c : system.getCustomers().getAll()){
-            ShoppingCart cart = system.getShoppingCart(c);
-            if (cart.contents().isEmpty()){
-                System.out.println(c.getFirstName() + " :  Empty cart");
-            } else {
-                System.out.println(c.getFirstName() + " :  " + cart.contents());
-            }
+        Collections.sort(v);
+        System.out.println("=====================");
+        for(Voucher vx : v){
+            System.out.println(vx);
         }
-        System.out.println("----------");
+        System.out.println("=====================");
     }
 
     @Override

@@ -27,7 +27,7 @@ public class ProcessCart extends Command<CookieOnDemand> {
     private Date getFormatedDate(String stringDate){
         Date dateFormated = null;
         try{
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yy hh:mm");
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm");
             dateFormated = formatter.parse(stringDate);
         }catch(Exception e){};
 

@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * A voucher should be presented at the bakery to pick up the order.
  */
-public class Voucher {
+public class Voucher implements Comparable<Voucher>{
 
 	// An unique identifier for this voucher
 	private String uuid;
@@ -49,4 +49,8 @@ public class Voucher {
         takeaway_date = date;
     }
 
+	@Override
+	public int compareTo(Voucher o) {
+			return ((Voucher) o).takeaway_date.compareTo(takeaway_date);
+	}
 }
