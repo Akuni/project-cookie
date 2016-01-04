@@ -1,6 +1,8 @@
 package cod;
 
 import cod.tcf.Customer;
+
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,5 +22,7 @@ public interface CustomerDatabase {
 	 * @return An optional that contains the customer if found, Empty is no one was found.
 	 */
 	Optional<Customer> findByFirstName(String firstName);
+
+	List<Customer> getAll();
 
 }
