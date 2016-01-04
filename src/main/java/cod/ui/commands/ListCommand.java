@@ -4,6 +4,7 @@ import cod.CookieOnDemand;
 import cod.CustomerDatabase;
 import cod.ShoppingCart;
 import cod.tcf.Customer;
+import cod.tcf.Voucher;
 import cod.ui.framework.Command;
 
 /**
@@ -18,12 +19,16 @@ public class ListCommand extends Command<CookieOnDemand> {
     @Override
     public void execute() {
         CustomerDatabase db = system.getCustomers();
+        for(Customer customer : system.getCustomers().getAll()){
+            System.out.println( customer.getFirstName() + " : " + customer.getVoucher());
+        }
+        System.out.println("----------");
         for(Customer c : system.getCustomers().getAll()){
             ShoppingCart cart = system.getShoppingCart(c);
             if (cart.contents().isEmpty()){
-                System.out.println(c.getFirstName() + "  Empty cart");
+                System.out.println(c.getFirstName() + " :  Empty cart");
             } else {
-                System.out.println(c.getFirstName() + "  " + cart.contents());
+                System.out.println(c.getFirstName() + " :  " + cart.contents());
             }
         }
     }
