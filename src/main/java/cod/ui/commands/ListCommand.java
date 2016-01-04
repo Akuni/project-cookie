@@ -31,6 +31,7 @@ public class ListCommand extends Command<CookieOnDemand> {
                 System.out.println(c.getFirstName() + " :  " + cart.contents());
             }
         }
+        System.out.println("----------");
     }
 
     @Override
