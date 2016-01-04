@@ -3,6 +3,7 @@ package cod.impl;
 import cod.*;
 import cod.tcf.Customer;
 import cod.tcf.Item;
+import cod.tcf.Shop;
 import cod.tcf.Voucher;
 
 import java.util.HashMap;
@@ -13,12 +14,14 @@ public class VolatileCoD implements CookieOnDemand {
 	CustomerDatabase customers;
 	ProductCatalogue products;
 	HashMap<Customer, ShoppingCart> carts;
+    Shop shop;
 
 
 	public VolatileCoD() {
 		customers = new VolatileCustomerDatabase();
 		products  = new VolatileProductCatalogue();
 		carts = new HashMap<>();
+        shop = new Shop();
 	}
 
 	@Override
@@ -47,6 +50,7 @@ public class VolatileCoD implements CookieOnDemand {
 			cart.remove(i);
 		}
 		c.setVoucher(Optional.of(v));
+        shop.addVoucher(v);
 	}
 
 }
